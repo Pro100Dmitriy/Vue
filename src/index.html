@@ -3,13 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>WebPack</title>
+    <style>
+    .circle{
+        border: 1px solid black;
+        border-radius: 100px;
+        width: 40px;
+        height: 40px;
+    }
+    .red{
+        background-color: red;
+    }
+    
+    </style>
 </head>
 <body>
 
     <div class="container">
         <div id="row" class="row">
-            <h1>Hello World</h1>
+            <h1 ref="heading">Hello {{name}}</h1>
+            <h1>{{ seyHello() }}</h1>
+            <h1>{{ isOk ? 'I\'m okey' : 'I\'m not okey!' }}</h1>
+            <a :href="url" v-on:click.prevent="">Google{{ url }} <span v-on:mousemove.stop=""></span> </a>
+            <div v-html='html'></div>
+            <p v-on:mouseover="onHover" v-on:mouseout="outHover">{{ count }}</p>
+            <button v-on:click="riseCounter(10, $event)">button</button>
+            <input type="text" v-on:keyup.enter.tab="enter">
+
+            <input type="text" @input="inpuptValue = $event.target.value" :value="inpuptValue" ></br>
+            <input type="text" v-model="inpuptValue">
+            <input type="text" v-model.lazy="inpuptValue">
+            <h2>{{ inpuptValue }}</h2>
+
+            <div class="circle" :class="{'red':isActive }" @click='isActive = !isActive'></div>
+            <div class="circle" :class="color"></div>
+            <input type="text" v-model="color" >
+
+            <ul>
+                <li v-for="(person, index) in people">{{ index++ }}{{ person }}</li>
+            </ul>
+
         </div>
+        <div id="row2">
+            <h1>{{ title }}</h1>
+            <button @click="click">aaaaaa</button>
+        </div>
+        <div id="row3">
+            
+        </div>
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
